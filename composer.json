@@ -38,5 +38,7 @@
                 "githubActions": true
             }
         }
-    }
+    },
+    "minimum-stability": "beta",
+    "prefer-stable": true
 }
