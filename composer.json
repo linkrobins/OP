@@ -2,7 +2,11 @@
     "name": "linkrobins/op",
     "description": "Adds an OP label next to the original poster's name on their posts in a discussion.",
     "type": "flarum-extension",
-    "keywords": ["discussion", "op", "label"],
+    "keywords": [
+        "discussion",
+        "op",
+        "label"
+    ],
     "license": "MIT",
     "require": {
         "flarum/core": "^2.0",
@@ -27,6 +31,11 @@
                 "name": "fas fa-crown",
                 "backgroundColor": "#1a2535",
                 "color": "#07adcc"
+            }
+        },
+        "flarum-cli": {
+            "modules": {
+                "githubActions": true
             }
         }
     }

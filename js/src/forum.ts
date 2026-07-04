@@ -46,9 +46,7 @@ app.initializers.add('linkrobins-op', () => {
       if (isFirstPost(post)) return;
 
       if (!vnode || !vnode.children) return;
-      vnode.children.push(
-        m('span', { className: 'LinkRobinsOp-badge' }, app.translator.trans('linkrobins-op.forum.label'))
-      );
+      vnode.children.push(m('span', { className: 'LinkRobinsOp-badge' }, app.translator.trans('linkrobins-op.forum.label')));
     } catch (e) {
       console.error('[linkrobins/op] view extension error:', e);
     }
