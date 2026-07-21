@@ -1,26 +1,32 @@
 # Link Robins OP
 
-A [Flarum 2.0](https://flarum.org) extension that adds a small **OP** label next to the original poster's name whenever they reply in their own discussion. Makes it easy to spot the discussion author across long threads.
+A [Flarum 2.0](https://flarum.org) extension that adds a small **OP** label next to the original poster's name whenever they reply in their own discussion. Makes it easy to spot the discussion author's contributions across a long thread.
 
 This is a Flarum 2.0 port of [`dem13n/topic-starter-label`](https://github.com/Dem13n/topic-starter-label) (Flarum 1.x), with the label changed to "OP" and adapted for Flarum 2.0's component registry.
 
-## Install
+## What it does
+
+Inside a discussion, every reply written by the person who started it gets a small **OP** badge added to its author byline. Two rules keep the badge useful:
+
+- **Only the original poster.** Replies from everyone else are left untouched.
+- **Replies only, not the opening post.** The first post is the OP by definition, so badging it would just be noise. The badge is there to pick the OP's *replies* out from the rest of the conversation.
+
+The badge only renders on the discussion page, so post previews and other lists stay clean. It uses your theme's primary color, so it fits in on any light or dark theme without configuration.
+
+## Installation
 
 ```sh
 composer require linkrobins/op
 php flarum cache:clear
 ```
 
-Then enable it in **Admin → Extensions**.
+Then enable it in **Admin → Extensions**. No configuration and no migrations.
 
-## How it works
+## Compatibility
 
-When viewing a discussion, every reply by the original poster gets a small green **OP** badge added to its author byline. The first post (which is by definition by the OP) is excluded — the badge is only useful for telling the OP's *replies* apart from everyone else's.
-
-## Requirements
-
-- Flarum **2.0+**
-- PHP **8.2+**
+- Flarum **2.0** (tested through 2.0.0-rc.5)
+- PHP **8.3+**
+- No dependencies beyond `flarum/core`
 
 ## License
 
