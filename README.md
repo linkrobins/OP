@@ -13,6 +13,25 @@ Inside a discussion, every reply written by the person who started it gets a sma
 
 The badge only renders on the discussion page, so post previews and other lists stay clean. It uses your theme's primary color, so it fits in on any light or dark theme without configuration.
 
+
+## What it does NOT do
+
+- No settings and no migrations. The badge is on for everyone once the extension is enabled.
+- No permission to hide it from particular groups — everyone who can read the discussion sees it.
+- Nothing outside the discussion page. The discussion list, post previews and search results are untouched, so a long index doesn't fill with badges.
+- It never badges the opening post. That post is the OP by definition, so a badge there would mark every discussion's first post and tell you nothing.
+
+## Styling
+
+The badge is a single element with the class `.LinkRobinsOp-badge`, inside the post's author byline. It inherits your theme's primary colour, so it follows light and dark themes without configuration. To restyle it, override that class in your theme's custom LESS:
+
+```less
+.LinkRobinsOp-badge {
+  background: @secondary-color;
+  text-transform: none;
+}
+```
+
 ## Installation
 
 ```sh
