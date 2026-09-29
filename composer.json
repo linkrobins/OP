@@ -25,7 +25,7 @@
     ],
     "extra": {
         "flarum-extension": {
-            "title": "Link Robins OP",
+            "title": "LR OP",
             "category": "feature",
             "icon": {
                 "name": "fas fa-crown",
