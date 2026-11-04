@@ -1,29 +1,47 @@
 # Link Robins OP
 
-A [Flarum 2.0](https://flarum.org) extension that adds a small **OP** label next to the original poster's name whenever they reply in their own discussion. Makes it easy to spot the discussion author's contributions across a long thread.
+A [Flarum 2](https://flarum.org) extension that adds a small **OP** badge next to the original poster's name whenever they reply in their own discussion. It makes the discussion author's contributions easy to spot in a long thread.
 
-This is a Flarum 2.0 port of [`dem13n/topic-starter-label`](https://github.com/Dem13n/topic-starter-label) (Flarum 1.x), with the label changed to "OP" and adapted for Flarum 2.0's component registry.
+This is a Flarum 2 port of [`dem13n/topic-starter-label`](https://github.com/Dem13n/topic-starter-label) (Flarum 1.x), with the label changed to "OP" and adapted for Flarum 2's component registry.
 
-## What it does
+## Features
 
-Inside a discussion, every reply written by the person who started it gets a small **OP** badge added to its author byline. Two rules keep the badge useful:
+- **Only the original poster.** A reply gets the badge when its author is the member who started the discussion. Replies from everyone else are left untouched.
+- **Replies only, not the opening post.** The first post is the OP by definition, so badging it would mark every discussion's first post and tell you nothing. The badge picks the OP's *replies* out from the rest of the conversation.
+- **Discussion page only.** The badge renders on the discussion page (including when you jump to a post), so the discussion list, post previews and search results stay clean.
+- **Readable on any theme.** The badge takes your forum's primary color. If white text on that color would be hard to read, the color is darkened until it clears the WCAG AA contrast ratio (4.5:1); a primary color too light for that keeps its own color with black text instead. Light and dark themes both work with no configuration.
+- **Translatable.** The label is a language string (`linkrobins-op.forum.label`, "OP" in English), so a language pack can change it.
 
-- **Only the original poster.** Replies from everyone else are left untouched.
-- **Replies only, not the opening post.** The first post is the OP by definition, so badging it would just be noise. The badge is there to pick the OP's *replies* out from the rest of the conversation.
+## What it does not do
 
-The badge only renders on the discussion page, so post previews and other lists stay clean. It uses your theme's primary color, so it fits in on any light or dark theme without configuration.
+- No settings, no permissions and no migrations. The badge is on for everyone who can read the discussion once the extension is enabled.
+- It cannot be hidden from particular groups.
+- It adds nothing outside the discussion page.
 
+## Requirements
 
-## What it does NOT do
+- Flarum 2.x
+- PHP 8.3 or newer
+- No dependencies beyond `flarum/core`
 
-- No settings and no migrations. The badge is on for everyone once the extension is enabled.
-- No permission to hide it from particular groups — everyone who can read the discussion sees it.
-- Nothing outside the discussion page. The discussion list, post previews and search results are untouched, so a long index doesn't fill with badges.
-- It never badges the opening post. That post is the OP by definition, so a badge there would mark every discussion's first post and tell you nothing.
+## Installation
+
+```sh
+composer require linkrobins/op
+```
+
+Then toggle it on in the admin panel's **Extensions** page. There is nothing to configure.
+
+## Updating
+
+```sh
+composer update linkrobins/op
+php flarum cache:clear
+```
 
 ## Styling
 
-The badge is a single element with the class `.LinkRobinsOp-badge`, inside the post's author byline. It inherits your theme's primary colour, so it follows light and dark themes without configuration. To restyle it, override that class in your theme's custom LESS:
+The badge is a single element with the class `.LinkRobinsOp-badge`, inside the post's author byline. To restyle it, override that class in your theme's custom LESS:
 
 ```less
 .LinkRobinsOp-badge {
@@ -31,21 +49,6 @@ The badge is a single element with the class `.LinkRobinsOp-badge`, inside the p
   text-transform: none;
 }
 ```
-
-## Installation
-
-```sh
-composer require linkrobins/op
-php flarum cache:clear
-```
-
-Then enable it in **Admin → Extensions**. No configuration and no migrations.
-
-## Compatibility
-
-- Flarum **2.0** (tested through 2.0.0-rc.5)
-- PHP **8.3+**
-- No dependencies beyond `flarum/core`
 
 ## License
 
